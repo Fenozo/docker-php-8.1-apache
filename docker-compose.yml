@@ -4,7 +4,7 @@ services:
     container_name: php-apache
     build: ./php
     depends_on:
-      - mysql_db
+      - db
     volumes:
       - ./conf.d/php.ini:/etc/php/8.1/php.ini
       - ./conf.d/xdebug.ini:/etc/php/8.1/xdebug.ini
@@ -12,7 +12,7 @@ services:
     ports:
       - "8000:80"
 
-  mysql_db:
+  db:
     container_name: db
     image: mysql
     restart: always
@@ -31,4 +31,4 @@ services:
     environment:
       PMA_HOST: db
     depends_on:
-      - mysql_db
+      - db
