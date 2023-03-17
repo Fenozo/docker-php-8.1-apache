@@ -32,5 +32,5 @@ services:
     restart: always
     environment:
       PMA_HOST: db
-      depends_on:
-        - mysql_db
+    depends_on:
+      - mysql_db
