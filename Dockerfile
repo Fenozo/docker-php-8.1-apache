@@ -1,5 +1,5 @@
 FROM php:8.1-apache
-WORKDIR /var/www
+WORKDIR /var/www/html
 
 LABEL maintainer="Jeffrey Santoso <jeffrey.k.santoso@gmail.com>"
 
@@ -107,7 +107,7 @@ RUN ln -s /etc/apache2/sites-available/site.conf /etc/apache2/sites-enabled/site
 
 EXPOSE 80
 
-WORKDIR /var/www
+WORKDIR /var/www/html
 
 COPY start.sh /
 RUN chmod +x /start.sh
