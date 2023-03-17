@@ -43,7 +43,6 @@ RUN  curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/loca
 
 RUN a2enmod rewrite
 
-RUN echo alias ll=\'ls -lF\' >> /root/.bashrc
 
 ENV PHP_ERROR_REPORTING  E_ALL & ~E_NOTICE
 ENV XDEBUG_HOST host.docker.internal
@@ -108,7 +107,3 @@ RUN ln -s /etc/apache2/sites-available/site.conf /etc/apache2/sites-enabled/site
 EXPOSE 80
 
 WORKDIR /var/www/html
-
-COPY start.sh /
-RUN chmod +x /start.sh
-CMD ["/start.sh"]
