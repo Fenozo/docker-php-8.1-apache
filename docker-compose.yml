@@ -6,7 +6,7 @@ services:
       context: ./php
       dockerfile: Dockerfile
     depends_on:
-      - db
+      - mysql_db
     volumes:
       - ./conf.d/php.ini:/etc/php/8.1/php.ini
       - ./conf.d/xdebug.ini:/etc/php/8.1/xdebug.ini
@@ -14,7 +14,7 @@ services:
     ports:
       - "8000:80"
 
-  db:
+  mysql_db:
     container_name: db
     image: mysql
     restart: always
@@ -28,9 +28,9 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     ports:
-      - '8080:80'
+      - "8001:80"
     restart: always
     environment:
       PMA_HOST: db
       depends_on:
-        - db
+        - mysql_db
